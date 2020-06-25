@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class DetailMemberViewController: UIViewController {
     var memberId: Int = 0

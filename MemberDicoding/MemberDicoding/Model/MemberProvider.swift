@@ -135,7 +135,7 @@ class MemberProvider {
     }
     
     func getMaxId(completion: @escaping(_ maxId: Int) -> ()) {
-        let taskContext = persistentContainer.viewContext
+        let taskContext = newTaskContext()
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
         

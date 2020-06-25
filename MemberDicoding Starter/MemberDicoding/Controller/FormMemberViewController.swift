@@ -11,7 +11,10 @@ import UIKit
 class FormMemberViewController: UIViewController {
     
     private let imagePicker = UIImagePickerController()
-
+    private lazy var memberProvider: MemberProvider = { return MemberProvider() }()
+    
+    var memberId: Int = 0
+    
     @IBOutlet weak var titleForm: UILabel!
     @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var imageMember: UIImageView!
@@ -33,6 +36,16 @@ class FormMemberViewController: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupForm()
+    }
+    
+    private func loadMembers(){
+        // load member
+    }
+    
     private func setupView() {
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -42,8 +55,49 @@ class FormMemberViewController: UIViewController {
         imageMember.clipsToBounds = true
     }
     
+    private func setupForm(){
+        if memberId > 0 {
+            titleForm.text = "Update Member"
+            titleButton.titleLabel?.text = "Update"
+            loadMembers()
+        } else {
+            titleForm.text = "Create New Member"
+            titleButton.titleLabel?.text = "Create"
+            titleButton.isEnabled = false
+        }
+    }
+    
     private func save() {
+        guard let name = nameMember.text, name != "" else {
+            alert("Field name is empty")
+            return
+        }
         
+        guard let email = emailMember.text, name != "" else {
+            alert("Field email is empty")
+            return
+        }
+        
+        guard let profession = professionMember.text, name != "" else {
+            alert("Field profession is empty")
+            return
+        }
+        
+        guard let about = aboutMember.text, name != "" else {
+            alert("Field about is empty")
+            return
+        }
+        
+        if let image = imageMember.image, let data = image.pngData() as NSData? {
+            // do save
+        }
+    }
+    
+    func alert(_ message: String ){
+        let allertController = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        allertController.addAction(alertAction)
+        self.present(allertController, animated: true, completion: nil)
     }
 }
 
@@ -57,12 +111,12 @@ extension FormMemberViewController: UIImagePickerControllerDelegate, UINavigatio
         if let result = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
             self.imageMember.contentMode = .scaleToFill
             self.imageMember.image = result
+            titleButton.isEnabled = true
             dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Failed", message: "Image can't be loaded.", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
 }

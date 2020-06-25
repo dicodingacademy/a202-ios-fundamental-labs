@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--List Member View Controller-->
+        <!--Dicoding Member-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ListMemberViewController" customModule="MemberDicoding" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,32 +15,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Na5-gs-c85">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="142" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Na5-gs-c85">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="member" rowHeight="125.5" id="Hwk-GO-xbD" customClass="MemberTableViewCell" customModule="MemberDicoding" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="125.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="member" id="Hwk-GO-xbD" customClass="MemberTableViewCell" customModule="MemberDicoding" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="142"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hwk-GO-xbD" id="eN2-ig-OPr">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="125.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="142"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Psl-ED-e9C">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Psl-ED-e9C">
+                                                    <rect key="frame" x="8" y="8" width="125" height="125"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="125" id="7MN-cS-52C"/>
                                                         <constraint firstAttribute="width" constant="125" id="gBR-uk-xss"/>
+                                                        <constraint firstAttribute="height" constant="125" id="sRb-ZS-JIo"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O13-L7-yJI">
-                                                    <rect key="frame" x="141" y="11" width="237" height="24"/>
+                                                    <rect key="frame" x="149" y="11" width="245" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profession" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBa-dX-F8J">
-                                                    <rect key="frame" x="141" y="39" width="237" height="15"/>
+                                                    <rect key="frame" x="149" y="39" width="245" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -49,13 +49,12 @@
                                             <constraints>
                                                 <constraint firstItem="O13-L7-yJI" firstAttribute="top" secondItem="eN2-ig-OPr" secondAttribute="topMargin" id="4p7-LI-dyH"/>
                                                 <constraint firstItem="LBa-dX-F8J" firstAttribute="leading" secondItem="Psl-ED-e9C" secondAttribute="trailing" constant="16" id="6eW-zC-NwR"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="LBa-dX-F8J" secondAttribute="trailing" constant="16" id="6fj-KZ-h2s"/>
+                                                <constraint firstItem="LBa-dX-F8J" firstAttribute="trailing" secondItem="eN2-ig-OPr" secondAttribute="trailingMargin" id="6fj-KZ-h2s"/>
                                                 <constraint firstItem="LBa-dX-F8J" firstAttribute="top" secondItem="O13-L7-yJI" secondAttribute="bottom" constant="4" id="Bh4-k5-qWA"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="O13-L7-yJI" secondAttribute="trailing" constant="16" id="NKd-G7-u40"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="O13-L7-yJI" secondAttribute="trailing" id="F7F-FB-3XE"/>
                                                 <constraint firstItem="O13-L7-yJI" firstAttribute="leading" secondItem="Psl-ED-e9C" secondAttribute="trailing" constant="16" id="f4H-MW-LM6"/>
-                                                <constraint firstItem="Psl-ED-e9C" firstAttribute="leading" secondItem="eN2-ig-OPr" secondAttribute="leading" id="g8y-RP-X92"/>
-                                                <constraint firstItem="Psl-ED-e9C" firstAttribute="top" secondItem="eN2-ig-OPr" secondAttribute="top" id="jts-8p-pzs"/>
-                                                <constraint firstAttribute="bottom" secondItem="Psl-ED-e9C" secondAttribute="bottom" id="rN6-Wp-0RD"/>
+                                                <constraint firstItem="Psl-ED-e9C" firstAttribute="leading" secondItem="eN2-ig-OPr" secondAttribute="leading" constant="8" id="g8y-RP-X92"/>
+                                                <constraint firstItem="Psl-ED-e9C" firstAttribute="top" secondItem="eN2-ig-OPr" secondAttribute="top" constant="8" id="jts-8p-pzs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -76,7 +75,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HTB-aY-QFe">
+                    <navigationItem key="navigationItem" title="Dicoding Member" id="HTB-aY-QFe">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="4vG-v9-n84">
                             <connections>
                                 <segue destination="WbL-eh-jhm" kind="show" id="Wqd-mq-BO6"/>
@@ -100,7 +99,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nsb-i6-mk9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nsb-i6-mk9">
                                 <rect key="frame" x="87" y="120" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="8SD-ks-URe"/>
@@ -237,7 +236,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hgb-pZ-RA5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hgb-pZ-RA5">
                                 <rect key="frame" x="127" y="167.5" width="160" height="157.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="AnP-1x-qTJ"/>
@@ -337,7 +336,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3bc-Fh-sp5"/>
+        <segue reference="Wqd-mq-BO6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person" catalog="system" width="128" height="117"/>

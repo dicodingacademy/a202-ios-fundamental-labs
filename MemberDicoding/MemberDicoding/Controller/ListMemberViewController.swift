@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class ListMemberViewController: UIViewController {
     
@@ -80,11 +79,5 @@ extension ListMemberViewController: UITableViewDelegate {
             memberId = Int(id)
         }
         self.performSegue(withIdentifier: "moveToDetail", sender: self)
-    }
-}
-
-extension ListMemberViewController: NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        memberTableView.reloadData()
     }
 }

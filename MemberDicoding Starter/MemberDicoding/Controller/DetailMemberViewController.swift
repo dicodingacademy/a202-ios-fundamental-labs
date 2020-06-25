@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailMemberViewController: UIViewController {
+    var memberId: Int = 0
+    
+    private lazy var memberProvider: MemberProvider = { return MemberProvider() }()
     
     @IBOutlet weak var imageMember: UIImageView!
     @IBOutlet weak var fullNameMember: UILabel!
@@ -17,8 +21,8 @@ class DetailMemberViewController: UIViewController {
     @IBOutlet weak var aboutMember: UILabel!
     
     @IBAction func deleteMember(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Warning", message: "Do you want to delete this member?", preferredStyle: .actionSheet)
-       
+        let alert = UIAlertController(title: "Warning", message: "Do you want to delete this member?", preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { (action) in
             self.delete()
         })
@@ -29,7 +33,7 @@ class DetailMemberViewController: UIViewController {
     }
     
     @IBAction func editMember(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Warning", message: "Do you want to change this member?", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Warning", message: "Do you want to change this member?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { (action) in
             self.performSegue(withIdentifier: "moveToEdit", sender: self)
@@ -40,17 +44,24 @@ class DetailMemberViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupView()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadMembers()
     }
     
-    private func setupView(){
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "moveToEdit") {
+            if let vc = segue.destination as? FormMemberViewController {
+                vc.memberId = self.memberId
+            }
+        }
+    }
+    
+    private func loadMembers(){
+        // load detail member
     }
     
     private func delete() {
-        
+        // delete member
     }
 }
