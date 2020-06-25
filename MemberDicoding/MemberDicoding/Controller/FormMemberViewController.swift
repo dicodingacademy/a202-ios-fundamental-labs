@@ -24,7 +24,7 @@ class FormMemberViewController: UIViewController {
     @IBOutlet weak var aboutMember: UITextField!
     
     @IBAction func saveMember(_ sender: UIButton) {
-        save()
+        saveMember()
     }
     
     @IBAction func getImage(_ sender: UIButton) {
@@ -49,7 +49,6 @@ class FormMemberViewController: UIViewController {
                 self.professionMember.text = member.profession
                 self.emailMember.text = member.email
                 self.aboutMember.text = member.about
-                
                 if let image = member.image {
                     self.imageMember.image = UIImage(data: image)
                     self.imageMember.layer.cornerRadius = self.imageMember.frame.height / 2
@@ -80,7 +79,7 @@ class FormMemberViewController: UIViewController {
         }
     }
     
-    private func save() {
+    private func saveMember() {
         guard let name = nameMember.text, name != "" else {
             alert("Field name is empty")
             return

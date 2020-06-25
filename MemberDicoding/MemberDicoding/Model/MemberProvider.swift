@@ -36,133 +36,125 @@ class MemberProvider {
     }
     
     func getAllMember(completion: @escaping(_ members: [MemberModel]) -> ()){
-        
         let taskContext = newTaskContext()
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
-        
-        do {
-            let results = try taskContext.fetch(fetchRequest)
-            var members: [MemberModel] = []
-            for result in results {
-                let member = MemberModel(id: result.value(forKeyPath: "id") as? Int32,
-                                         name: result.value(forKeyPath: "name") as? String,
-                                         email: result.value(forKeyPath: "email") as? String,
-                                         profession: result.value(forKeyPath: "profession") as? String,
-                                         about: result.value(forKeyPath: "about") as? String,
-                                         image: result.value(forKeyPath: "image") as? Data)
-                
-                members.append(member)
+        taskContext.perform {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
+            do {
+                let results = try taskContext.fetch(fetchRequest)
+                var members: [MemberModel] = []
+                for result in results {
+                    let member = MemberModel(id: result.value(forKeyPath: "id") as? Int32,
+                                             name: result.value(forKeyPath: "name") as? String,
+                                             email: result.value(forKeyPath: "email") as? String,
+                                             profession: result.value(forKeyPath: "profession") as? String,
+                                             about: result.value(forKeyPath: "about") as? String,
+                                             image: result.value(forKeyPath: "image") as? Data)
+                    
+                    members.append(member)
+                }
+                completion(members)
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
             }
-            completion(members)
-            
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
     func getMember(_ id: Int, completion: @escaping(_ members: MemberModel) -> ()){
-        
         let taskContext = newTaskContext()
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
-        fetchRequest.fetchLimit = 1
-        fetchRequest.predicate = NSPredicate(format: "id == \(id)")
-        
-        do {
-            if let result = try taskContext.fetch(fetchRequest).first{
-                
-                let member = MemberModel(id: result.value(forKeyPath: "id") as? Int32,
-                                         name: result.value(forKeyPath: "name") as? String,
-                                         email: result.value(forKeyPath: "email") as? String,
-                                         profession: result.value(forKeyPath: "profession") as? String,
-                                         about: result.value(forKeyPath: "about") as? String,
-                                         image: result.value(forKeyPath: "image") as? Data)
-                completion(member)
+        taskContext.perform {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "id == \(id)")
+            do {
+                if let result = try taskContext.fetch(fetchRequest).first{
+                    let member = MemberModel(id: result.value(forKeyPath: "id") as? Int32,
+                                             name: result.value(forKeyPath: "name") as? String,
+                                             email: result.value(forKeyPath: "email") as? String,
+                                             profession: result.value(forKeyPath: "profession") as? String,
+                                             about: result.value(forKeyPath: "about") as? String,
+                                             image: result.value(forKeyPath: "image") as? Data)
+                    completion(member)
+                }
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
             }
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
-    
-    func saveMember(_ name: String, _ email: String, _ profession: String, _ about: String, _ image: Data, completion: @escaping() -> ()){
-        
+    func createMember(_ name: String, _ email: String, _ profession: String, _ about: String, _ image: Data, completion: @escaping() -> ()){
         let taskContext = newTaskContext()
-        
-        if let entity = NSEntityDescription.entity(forEntityName: "Member", in: taskContext) {
-            let member = NSManagedObject(entity: entity, insertInto: taskContext)
-            getMaxId { (id) in
-                member.setValue(id+1, forKeyPath: "id")
-                member.setValue(name, forKeyPath: "name")
-                member.setValue(email, forKeyPath: "email")
-                member.setValue(profession, forKeyPath: "profession")
-                member.setValue(about, forKeyPath: "about")
-                member.setValue(image, forKeyPath: "image")
-            }
-            
-            do {
-                try taskContext.save()
-                completion()
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
+        taskContext.perform {
+            if let entity = NSEntityDescription.entity(forEntityName: "Member", in: taskContext) {
+                let member = NSManagedObject(entity: entity, insertInto: taskContext)
+                self.getMaxId { (id) in
+                    member.setValue(id+1, forKeyPath: "id")
+                    member.setValue(name, forKeyPath: "name")
+                    member.setValue(email, forKeyPath: "email")
+                    member.setValue(profession, forKeyPath: "profession")
+                    member.setValue(about, forKeyPath: "about")
+                    member.setValue(image, forKeyPath: "image")
+                    
+                    do {
+                        try taskContext.save()
+                        completion()
+                    } catch let error as NSError {
+                        print("Could not save. \(error), \(error.userInfo)")
+                    }
+                }
             }
         }
     }
     
     func updateMember(_ id: Int, _ name: String, _ email: String, _ profession: String, _ about: String, _ image: Data, completion: @escaping() -> ()){
-        
         let taskContext = newTaskContext()
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
-        fetchRequest.fetchLimit = 1
-        fetchRequest.predicate = NSPredicate(format: "id == \(id)")
-        
-        if let result = try? taskContext.fetch(fetchRequest), let member = result.first as? Member{
-            member.setValue(name, forKeyPath: "name")
-            member.setValue(email, forKeyPath: "email")
-            member.setValue(profession, forKeyPath: "profession")
-            member.setValue(about, forKeyPath: "about")
-            member.setValue(image, forKeyPath: "image")
-            
-            do {
-                try taskContext.save()
-                completion()
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
+        taskContext.perform {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "id == \(id)")
+            if let result = try? taskContext.fetch(fetchRequest), let member = result.first as? Member{
+                member.setValue(name, forKeyPath: "name")
+                member.setValue(email, forKeyPath: "email")
+                member.setValue(profession, forKeyPath: "profession")
+                member.setValue(about, forKeyPath: "about")
+                member.setValue(image, forKeyPath: "image")
+                do {
+                    try taskContext.save()
+                    completion()
+                } catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
             }
         }
     }
     
     func getMaxId(completion: @escaping(_ maxId: Int) -> ()) {
         let taskContext = newTaskContext()
-        
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
-        
-        let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        fetchRequest.fetchLimit = 1
-        
-        do {
-            let lastMember = try taskContext.fetch(fetchRequest)
-            if let member = lastMember.first, let position = member.value(forKeyPath: "id") as? Int{
-                completion(position)
-            } else {
-                completion(0)
+        taskContext.perform {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
+            let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            fetchRequest.fetchLimit = 1
+            do {
+                let lastMember = try taskContext.fetch(fetchRequest)
+                if let member = lastMember.first, let position = member.value(forKeyPath: "id") as? Int{
+                    completion(position)
+                } else {
+                    completion(0)
+                }
+            } catch {
+                print(error.localizedDescription)
             }
-        } catch {
-            print(error.localizedDescription)
         }
     }
     
-    func deleteAll(completion: @escaping() -> ()) {
+    func deleteAllMember(completion: @escaping() -> ()) {
         let taskContext = newTaskContext()
         taskContext.perform {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Member")
             let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
             batchDeleteRequest.resultType = .resultTypeCount
-            
-            if let batchDeleteResult = try? taskContext.execute(batchDeleteRequest) as? NSBatchDeleteResult, batchDeleteResult.result != nil {
+            if let batchDeleteResult = try? taskContext.execute(batchDeleteRequest) as? NSBatchDeleteResult,
+                batchDeleteResult.result != nil {
                 completion()
             }
         }
@@ -174,11 +166,10 @@ class MemberProvider {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Member")
             fetchRequest.fetchLimit = 1
             fetchRequest.predicate = NSPredicate(format: "id == \(id)")
-            
             let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
             batchDeleteRequest.resultType = .resultTypeCount
-            
-            if let batchDeleteResult = try? taskContext.execute(batchDeleteRequest) as? NSBatchDeleteResult, batchDeleteResult.result != nil {
+            if let batchDeleteResult = try? taskContext.execute(batchDeleteRequest) as? NSBatchDeleteResult,
+                batchDeleteResult.result != nil {
                 completion()
             }
         }

@@ -24,7 +24,7 @@ class FormMemberViewController: UIViewController {
     @IBOutlet weak var aboutMember: UITextField!
     
     @IBAction func saveMember(_ sender: UIButton) {
-        save()
+        saveMember()
     }
     
     @IBAction func getImage(_ sender: UIButton) {
@@ -67,7 +67,7 @@ class FormMemberViewController: UIViewController {
         }
     }
     
-    private func save() {
+    private func saveMember() {
         guard let name = nameMember.text, name != "" else {
             alert("Field name is empty")
             return

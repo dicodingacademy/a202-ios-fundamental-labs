@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 class DetailMemberViewController: UIViewController {
     var memberId: Int = 0
@@ -24,7 +23,7 @@ class DetailMemberViewController: UIViewController {
         let alert = UIAlertController(title: "Warning", message: "Do you want to delete this member?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { (action) in
-            self.delete()
+            self.deleteMember()
         })
         
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -58,10 +57,10 @@ class DetailMemberViewController: UIViewController {
     }
     
     private func loadMembers(){
-        // load detail member
+        // load member
     }
     
-    private func delete() {
+    private func deleteMember() {
         // delete member
     }
 }

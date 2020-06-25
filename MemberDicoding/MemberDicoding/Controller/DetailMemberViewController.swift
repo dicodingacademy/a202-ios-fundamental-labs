@@ -23,7 +23,7 @@ class DetailMemberViewController: UIViewController {
         let alert = UIAlertController(title: "Warning", message: "Do you want to delete this member?", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Yes", style: .default) { (action) in
-            self.delete()
+            self.deleteMember()
         })
         
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -63,7 +63,6 @@ class DetailMemberViewController: UIViewController {
                 self.professionMember.text = member.profession
                 self.emailMember.text = member.email
                 self.aboutMember.text = member.about
-                
                 if let image = member.image{
                     self.imageMember.image = UIImage(data: image)
                     self.imageMember.layer.cornerRadius = self.imageMember.frame.height / 2
@@ -73,11 +72,10 @@ class DetailMemberViewController: UIViewController {
         }
     }
     
-    private func delete() {
+    private func deleteMember() {
         memberProvider.deleteMember(memberId) {
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Successful", message: "Member deleted.", preferredStyle: .alert)
-                
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
                     self.navigationController?.popViewController(animated: true)
                 })
