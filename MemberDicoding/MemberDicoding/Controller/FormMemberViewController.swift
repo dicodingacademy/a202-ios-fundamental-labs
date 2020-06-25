@@ -114,7 +114,7 @@ class FormMemberViewController: UIViewController {
                     }
                 }
             } else {
-                memberProvider.saveMember(name, email, profession, about, data as Data) {
+                memberProvider.createMember(name, email, profession, about, data as Data) {
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Successful", message: "New member created.", preferredStyle: .alert)
                         
