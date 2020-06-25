@@ -236,8 +236,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hgb-pZ-RA5">
-                                <rect key="frame" x="127" y="167.5" width="160" height="157.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Hgb-pZ-RA5">
+                                <rect key="frame" x="127" y="166.5" width="160" height="159"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="AnP-1x-qTJ"/>
                                     <constraint firstAttribute="width" constant="160" id="GfF-aa-Bee"/>
@@ -339,7 +339,7 @@
         <segue reference="3bc-Fh-sp5"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
         <image name="trash" catalog="system" width="121" height="128"/>
