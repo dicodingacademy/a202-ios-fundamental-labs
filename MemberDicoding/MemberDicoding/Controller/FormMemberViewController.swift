@@ -43,14 +43,14 @@ class FormMemberViewController: UIViewController {
     }
     
     private func loadMembers(){
-        memberProvider.getMember(memberId){ (result) in
+        memberProvider.getMember(memberId){ (member) in
             DispatchQueue.main.async {
-                self.nameMember.text = result.value(forKeyPath: "name") as? String
-                self.professionMember.text = result.value(forKeyPath: "profession") as? String
-                self.emailMember.text = result.value(forKeyPath: "email") as? String
-                self.aboutMember.text = result.value(forKeyPath: "about") as? String
+                self.nameMember.text = member.name
+                self.professionMember.text = member.profession
+                self.emailMember.text = member.email
+                self.aboutMember.text = member.about
                 
-                if let image = result.value(forKeyPath: "image") as? Data{
+                if let image = member.image {
                     self.imageMember.image = UIImage(data: image)
                     self.imageMember.layer.cornerRadius = self.imageMember.frame.height / 2
                     self.imageMember.clipsToBounds = true

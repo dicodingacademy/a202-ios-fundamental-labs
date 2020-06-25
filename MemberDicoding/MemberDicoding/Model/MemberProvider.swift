@@ -35,14 +35,25 @@ class MemberProvider {
         return taskContext
     }
     
-    func getAllMember(completion: @escaping(_ members: [NSManagedObject]) -> ()){
+    func getAllMember(completion: @escaping(_ members: [MemberModel]) -> ()){
         
-        let taskContext = persistentContainer.viewContext
+        let taskContext = newTaskContext()
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
         
         do {
-            let members = try taskContext.fetch(fetchRequest)
+            let results = try taskContext.fetch(fetchRequest)
+            var members: [MemberModel] = []
+            for result in results {
+                let member = MemberModel(id: result.value(forKeyPath: "id") as? Int32,
+                                         name: result.value(forKeyPath: "name") as? String,
+                                         email: result.value(forKeyPath: "email") as? String,
+                                         profession: result.value(forKeyPath: "profession") as? String,
+                                         about: result.value(forKeyPath: "about") as? String,
+                                         image: result.value(forKeyPath: "image") as? Data)
+                
+                members.append(member)
+            }
             completion(members)
             
         } catch let error as NSError {
@@ -50,18 +61,23 @@ class MemberProvider {
         }
     }
     
-    func getMember(_ id: Int, completion: @escaping(_ members: NSManagedObject) -> ()){
+    func getMember(_ id: Int, completion: @escaping(_ members: MemberModel) -> ()){
         
-        let taskContext = persistentContainer.viewContext
+        let taskContext = newTaskContext()
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "id == \(id)")
         
         do {
-            let result = try taskContext.fetch(fetchRequest)
-            
-            if let member = result.first {
+            if let result = try taskContext.fetch(fetchRequest).first{
+                
+                let member = MemberModel(id: result.value(forKeyPath: "id") as? Int32,
+                                         name: result.value(forKeyPath: "name") as? String,
+                                         email: result.value(forKeyPath: "email") as? String,
+                                         profession: result.value(forKeyPath: "profession") as? String,
+                                         about: result.value(forKeyPath: "about") as? String,
+                                         image: result.value(forKeyPath: "image") as? Data)
                 completion(member)
             }
         } catch let error as NSError {

@@ -11,12 +11,11 @@ import CoreData
 
 class ListMemberViewController: UIViewController {
     
-    @IBOutlet weak var memberTableView: UITableView!
-    
-    private var members: [NSManagedObject] = []
+    private var members: [MemberModel] = []
     private var memberId: Int = 0
-    
     private lazy var memberProvider: MemberProvider = { return MemberProvider() }()
+    
+    @IBOutlet weak var memberTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +26,6 @@ class ListMemberViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadMembers()
-
     }
     
     private func loadMembers(){
@@ -53,10 +51,10 @@ extension ListMemberViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "member", for: indexPath) as? MemberTableViewCell {
             let member = members[indexPath.row]
-            cell.fullNameMember.text = member.value(forKeyPath: "name") as? String
-            cell.professionMember.text = member.value(forKeyPath: "profession") as? String
+            cell.fullNameMember.text = member.name
+            cell.professionMember.text = member.profession
             
-            if let image = member.value(forKeyPath: "image") as? Data{
+            if let image = member.image{
                 cell.imageMember.image = UIImage(data: image)
                 cell.imageMember.layer.cornerRadius = cell.imageMember.frame.height / 2
                 cell.imageMember.clipsToBounds = true
@@ -78,8 +76,8 @@ extension ListMemberViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let id = members[indexPath.row].value(forKey: "id") as? Int{
-            memberId = id
+        if let id = members[indexPath.row].id {
+            memberId = Int(id)
         }
         self.performSegue(withIdentifier: "moveToDetail", sender: self)
     }
