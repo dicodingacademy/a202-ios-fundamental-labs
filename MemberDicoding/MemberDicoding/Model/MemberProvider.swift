@@ -83,7 +83,7 @@ class MemberProvider {
     
     func createMember(_ name: String, _ email: String, _ profession: String, _ about: String, _ image: Data, completion: @escaping() -> ()){
         let taskContext = newTaskContext()
-        taskContext.perform {
+        taskContext.performAndWait {
             if let entity = NSEntityDescription.entity(forEntityName: "Member", in: taskContext) {
                 let member = NSManagedObject(entity: entity, insertInto: taskContext)
                 self.getMaxId { (id) in
@@ -129,7 +129,7 @@ class MemberProvider {
     
     func getMaxId(completion: @escaping(_ maxId: Int) -> ()) {
         let taskContext = newTaskContext()
-        taskContext.perform {
+        taskContext.performAndWait {
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Member")
             let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
             fetchRequest.sortDescriptors = [sortDescriptor]
@@ -171,6 +171,16 @@ class MemberProvider {
             if let batchDeleteResult = try? taskContext.execute(batchDeleteRequest) as? NSBatchDeleteResult,
                 batchDeleteResult.result != nil {
                 completion()
+            }
+        }
+    }
+    
+    func addMemberDummy(completion: @escaping() -> ()){
+        for member in memberDummies{
+            if let name = member.name, let email = member.email, let profession = member.profession, let about = member.about, let image = member.image {
+                self.createMember(name, email, profession, about, image){
+                    completion()
+                }
             }
         }
     }

@@ -18,6 +18,7 @@
 		2A832AF124A30D3100653321 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A832AF024A30D3100653321 /* MemberTableViewCell.swift */; };
 		2A832AFA24A330CE00653321 /* MemberProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A832AF924A330CD00653321 /* MemberProvider.swift */; };
 		2A832B0324A44C2800653321 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A832B0224A44C2700653321 /* MemberModel.swift */; };
+		2A832B2F24A57EB500653321 /* MemberDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A832B2E24A57EB500653321 /* MemberDummy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		2A832AF024A30D3100653321 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		2A832AF924A330CD00653321 /* MemberProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProvider.swift; sourceTree = "<group>"; };
 		2A832B0224A44C2700653321 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
+		2A832B2E24A57EB500653321 /* MemberDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDummy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				2A832AF924A330CD00653321 /* MemberProvider.swift */,
 				2A832B0224A44C2700653321 /* MemberModel.swift */,
+				2A832B2E24A57EB500653321 /* MemberDummy.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				2A832AEF24A30C7200653321 /* FormMemberViewController.swift in Sources */,
 				2A832AED24A30C0200653321 /* DetailMemberViewController.swift in Sources */,
+				2A832B2F24A57EB500653321 /* MemberDummy.swift in Sources */,
 				2A832AF124A30D3100653321 /* MemberTableViewCell.swift in Sources */,
 				2A832B0324A44C2800653321 /* MemberModel.swift in Sources */,
 				2A832AFA24A330CE00653321 /* MemberProvider.swift in Sources */,

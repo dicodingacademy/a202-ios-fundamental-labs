@@ -39,8 +39,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profession" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBa-dX-F8J">
-                                                    <rect key="frame" x="149" y="39" width="245" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profession" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBa-dX-F8J">
+                                                    <rect key="frame" x="149" y="39" width="245" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -256,7 +256,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Fjl-CV-g1q"/>
                                 </constraints>
-                                <state key="normal" title="Create"/>
+                                <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveMember:" destination="WbL-eh-jhm" eventType="touchUpInside" id="XKJ-te-thg"/>
                                 </connections>
@@ -336,7 +336,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3bc-Fh-sp5"/>
+        <segue reference="Wqd-mq-BO6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>

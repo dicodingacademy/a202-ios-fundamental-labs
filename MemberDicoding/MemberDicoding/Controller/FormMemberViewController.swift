@@ -70,11 +70,9 @@ class FormMemberViewController: UIViewController {
     private func setupForm(){
         if memberId > 0 {
             titleForm.text = "Update Member"
-            titleButton.titleLabel?.text = "Update"
             loadMembers()
         } else {
             titleForm.text = "Create New Member"
-            titleButton.titleLabel?.text = "Create"
             titleButton.isEnabled = false
         }
     }
