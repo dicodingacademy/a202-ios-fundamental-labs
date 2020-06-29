@@ -38,6 +38,8 @@
 		2A832BDD24A8FB6B00653321 /* UITestingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITestingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A832BDF24A8FB6B00653321 /* UITestingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingUITests.swift; sourceTree = "<group>"; };
 		2A832BE124A8FB6B00653321 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A832BE724A993B000653321 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
+		2A832BE824A99AF400653321 /* UITesting.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UITesting.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				2A832BDF24A8FB6B00653321 /* UITestingUITests.swift */,
+				2A832BE724A993B000653321 /* TestPlan.xctestplan */,
+				2A832BE824A99AF400653321 /* UITesting.xctestplan */,
 				2A832BE124A8FB6B00653321 /* Info.plist */,
 			);
 			path = UITestingUITests;
