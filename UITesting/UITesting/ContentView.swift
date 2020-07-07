@@ -20,6 +20,7 @@ struct ContentView: View {
                 .padding(.all)
                 .frame(width: nil)
         }
+//        .disabled(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("Apa kabar?"), dismissButton: .default(Text("OK")))
         }
