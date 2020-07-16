@@ -25,7 +25,7 @@
 		2A991BD72498CD0B00C2C812 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A991BDA2498CD0B00C2C812 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A991BDC2498CD0B00C2C812 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A991BE524990A7A00C2C812 /* guitar_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = guitar_background.mp3; path = "../../../../../../ProjectAndroid/dicoding/a14-made-labs5/SoundPoolAndMediaPlayer/MyMediaPlayer/java/app/src/main/res/raw/guitar_background.mp3"; sourceTree = "<group>"; };
+		2A991BE524990A7A00C2C812 /* guitar_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = guitar_background.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
