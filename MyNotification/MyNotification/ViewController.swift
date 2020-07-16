@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         
         let content = UNMutableNotificationContent()
         content.title = "Submission Anda Telah Diterima!"
-        content.body = "Selamat Anda telah menyelesaikan kelas Belajar Fundamental Aplikasi."
+        content.body = "Selamat Anda telah menyelesaikan kelas Belajar Fundamental Aplikasi iOS."
         content.sound = .default
         content.userInfo = ["value": "Data dengan local notification"]
         
