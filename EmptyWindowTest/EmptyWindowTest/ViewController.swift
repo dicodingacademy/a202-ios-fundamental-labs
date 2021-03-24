@@ -15,9 +15,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    func dicodingSwift(_ s:String) -> String {
+    func dicodingSwift(_ value: String) -> String {
         return "dicoding"
     }
 
 }
-

@@ -7,16 +7,15 @@
 //
 
 import XCTest
- 
+
 @testable import EmptyWindowTest
 class EmptyWindowTestTests: XCTestCase {
- 
+
     var viewController = ViewController()
-    
+
     func testDicodingSwift() {
         let input = "swift"
         let output = "dicoding"
         XCTAssertEqual(output, self.viewController.dicodingSwift(input), "Failed to produce \(output) from \(input)")
     }
 }
-
