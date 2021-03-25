@@ -10,6 +10,5 @@ import CoreData
 import UIKit
 
 class MemberProvider {
-    
-   
+
 }

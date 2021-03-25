@@ -9,12 +9,12 @@
 import UIKit
 
 class FormMemberViewController: UIViewController {
-    
+
     private let imagePicker = UIImagePickerController()
     private lazy var memberProvider: MemberProvider = { return MemberProvider() }()
-    
+
     var memberId: Int = 0
-    
+
     @IBOutlet weak var titleForm: UILabel!
     @IBOutlet weak var titleButton: UIButton!
     @IBOutlet weak var imageMember: UIImageView!
@@ -22,28 +22,28 @@ class FormMemberViewController: UIViewController {
     @IBOutlet weak var emailMember: UITextField!
     @IBOutlet weak var professionMember: UITextField!
     @IBOutlet weak var aboutMember: UITextField!
-    
+
     @IBAction func saveMember(_ sender: UIButton) {
         saveMember()
     }
-    
+
     @IBAction func getImage(_ sender: UIButton) {
         self.present(imagePicker, animated: true, completion: nil)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         setupForm()
     }
-    
-    private func loadMembers(){
-        memberProvider.getMember(memberId){ (member) in
+
+    private func loadMembers() {
+        memberProvider.getMember(memberId) { member in
             DispatchQueue.main.async {
                 self.nameMember.text = member.name
                 self.professionMember.text = member.profession
@@ -57,17 +57,17 @@ class FormMemberViewController: UIViewController {
             }
         }
     }
-    
+
     private func setupView() {
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
-        
+
         imageMember.layer.cornerRadius = imageMember.frame.height / 2
         imageMember.clipsToBounds = true
     }
-    
-    private func setupForm(){
+
+    private func setupForm() {
         if memberId > 0 {
             titleForm.text = "Update Member"
             loadMembers()
@@ -76,36 +76,36 @@ class FormMemberViewController: UIViewController {
             titleButton.isEnabled = false
         }
     }
-    
+
     private func saveMember() {
         guard let name = nameMember.text, name != "" else {
             alert("Field name is empty")
             return
         }
-        
+
         guard let email = emailMember.text, name != "" else {
             alert("Field email is empty")
             return
         }
-        
+
         guard let profession = professionMember.text, name != "" else {
             alert("Field profession is empty")
             return
         }
-        
+
         guard let about = aboutMember.text, name != "" else {
             alert("Field about is empty")
             return
         }
-        
+
         if let image = imageMember.image, let data = image.pngData() as NSData? {
-            
+
             if memberId > 0 {
                 memberProvider.updateMember(memberId, name, email, profession, about, data as Data) {
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Successful", message: "Member updated.", preferredStyle: .alert)
-                        
-                        alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
+
+                        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                             self.navigationController?.popViewController(animated: true)
                         })
                         self.present(alert, animated: true, completion: nil)
@@ -115,8 +115,8 @@ class FormMemberViewController: UIViewController {
                 memberProvider.createMember(name, email, profession, about, data as Data) {
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Successful", message: "New member created.", preferredStyle: .alert)
-                        
-                        alert.addAction(UIAlertAction(title: "OK", style: .default) { (action) in
+
+                        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                             self.navigationController?.popViewController(animated: true)
                         })
                         self.present(alert, animated: true, completion: nil)
@@ -125,8 +125,8 @@ class FormMemberViewController: UIViewController {
             }
         }
     }
-    
-    func alert(_ message: String ){
+
+    func alert(_ message: String) {
         let allertController = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         allertController.addAction(alertAction)
@@ -134,14 +134,16 @@ class FormMemberViewController: UIViewController {
     }
 }
 
-extension FormMemberViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+extension FormMemberViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let result = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
+
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
+    ) {
+        if let result = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.imageMember.contentMode = .scaleToFill
             self.imageMember.image = result
             titleButton.isEnabled = true
