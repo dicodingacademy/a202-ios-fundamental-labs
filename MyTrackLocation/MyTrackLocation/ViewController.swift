@@ -11,11 +11,11 @@ import CoreLocation
 import MapKit
 
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var mapView: MKMapView!
-    
+
     private var locations: [MKPointAnnotation] = []
-    
+
     private lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
         manager.delegate = self
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         manager.allowsBackgroundLocationUpdates = true
         return manager
     }()
-    
+
     @IBAction func trackSwitch(_ sender: UISwitch) {
         if sender.isOn {
             locationManager.startUpdatingLocation()
@@ -35,13 +35,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: CLLocationManagerDelegate {
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let mostRecentLocation = locations.last else { return }
-        
+
         let annotationToAdd = MKPointAnnotation()
         annotationToAdd.coordinate = mostRecentLocation.coordinate
-        
+
         self.locations.append(annotationToAdd)
         while self.locations.count > 50 {
             if let annotationToRemove = self.locations.first {
@@ -49,7 +49,7 @@ extension ViewController: CLLocationManagerDelegate {
                 mapView.removeAnnotation(annotationToRemove)
             }
         }
-        
+
         if UIApplication.shared.applicationState == .active {
             mapView.showAnnotations(self.locations, animated: true)
         } else {
