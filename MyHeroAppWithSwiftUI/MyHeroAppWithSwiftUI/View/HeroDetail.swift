@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HeroDetail: View {
     var hero: Hero
-    
+
     var body: some View {
         ScrollView {
             VStack {
@@ -26,7 +26,7 @@ struct HeroDetail: View {
                 Spacer(minLength: 20)
                 Text(hero.description)
                     .font(.system(size: 16))
-                
+
             }
         }.padding(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
     }

@@ -12,7 +12,7 @@ import UIKit
 struct HeroList: View {
     var body: some View {
         List(heroes) { hero in
-            ZStack{
+            ZStack {
                 HeroRow(hero: hero)
                 NavigationLink(destination: HeroDetail(hero: hero)) {
                     EmptyView()
