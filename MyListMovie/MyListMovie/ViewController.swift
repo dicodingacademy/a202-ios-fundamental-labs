@@ -15,10 +15,10 @@ enum DownloadState {
 class Movie {
     let title: String
     let poster: URL
-    
+
     var image: UIImage?
     var state: DownloadState = .new
-    
+
     init(title: String, poster: URL) {
         self.title = title
         self.poster = poster
@@ -40,22 +40,22 @@ let movies = [
 
 class ImageDownloader: Operation {
     private let _movie: Movie
-    
+
     init(movie: Movie) {
         _movie = movie
     }
-    
+
     override func main() {
         if isCancelled {
             return
         }
-        
+
         guard let imageData = try? Data(contentsOf: _movie.poster) else { return }
-        
+
         if isCancelled {
             return
         }
-        
+
         if !imageData.isEmpty {
             _movie.image = UIImage(data: imageData)
             _movie.state = .downloaded
@@ -67,8 +67,8 @@ class ImageDownloader: Operation {
 }
 
 class PendingOperations {
-    lazy var downloadInProgress: [IndexPath : Operation] = [:]
-    
+    lazy var downloadInProgress: [IndexPath: Operation] = [:]
+
     lazy var downloadQueue: OperationQueue = {
         var queue = OperationQueue()
         queue.name = "com.dicoding.imagedownload"
@@ -79,23 +79,23 @@ class PendingOperations {
 
 class ViewController: UIViewController {
     lazy var tableView: UITableView = {
-        let v = UITableView()
-        
-        v.delegate = self
-        v.dataSource = self
-        v.rowHeight = 150
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.register(UITableViewCell.self, forCellReuseIdentifier: "movie-cell")
-        
-        return v
+        let view = UITableView()
+
+        view.delegate = self
+        view.dataSource = self
+        view.rowHeight = 150
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.register(UITableViewCell.self, forCellReuseIdentifier: "movie-cell")
+
+        return view
     }()
-    
+
     private let _pendingOperations = PendingOperations()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
-        
+
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -103,66 +103,62 @@ class ViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    
+
     fileprivate func startOperations(movie: Movie, indexPath: IndexPath) {
         if movie.state == .new {
             startDownload(movie: movie, indexPath: indexPath)
         }
     }
-    
+
     fileprivate func startDownload(movie: Movie, indexPath: IndexPath) {
         guard _pendingOperations.downloadInProgress[indexPath] == nil else { return }
-        
+
         let downloader = ImageDownloader(movie: movie)
         downloader.completionBlock = {
             if downloader.isCancelled { return }
-            
+
             DispatchQueue.main.async {
                 self._pendingOperations.downloadInProgress.removeValue(forKey: indexPath)
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
-        
+
         _pendingOperations.downloadInProgress[indexPath] = downloader
         _pendingOperations.downloadQueue.addOperation(downloader)
     }
-    
-    
+
     fileprivate func toggleSuspendOperations(isSuspended: Bool) {
         _pendingOperations.downloadQueue.isSuspended = isSuspended
     }
 }
 
-
 extension ViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
-    
+
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         toggleSuspendOperations(isSuspended: true)
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         toggleSuspendOperations(isSuspended: false)
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movie-cell", for: indexPath)
         let movie = movies[indexPath.row]
-        
+
         cell.textLabel?.numberOfLines = 2
         cell.textLabel?.text = movie.title
         cell.imageView?.image = movie.image
-        
+
         if cell.accessoryView == nil {
             cell.accessoryView = UIActivityIndicatorView(style: .medium)
         }
-        
+
         guard let indicator = cell.accessoryView as? UIActivityIndicatorView else { fatalError() }
-        
+
         if movie.state == .new {
             indicator.startAnimating()
             if !tableView.isDragging && !tableView.isDecelerating {
@@ -174,4 +170,3 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UIScrollVi
         return cell
     }
 }
-

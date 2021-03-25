@@ -13,6 +13,7 @@
 		2A832BFD24A9D95000653321 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A832BFB24A9D95000653321 /* Main.storyboard */; };
 		2A832BFF24A9D95300653321 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A832BFE24A9D95300653321 /* Assets.xcassets */; };
 		2A832C0224A9D95300653321 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A832C0024A9D95300653321 /* LaunchScreen.storyboard */; };
+		2ACD11D7260C4D6C0098E33E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2ACD11D6260C4D6C0098E33E /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2A832BFE24A9D95300653321 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A832C0124A9D95300653321 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A832C0324A9D95300653321 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2ACD11D6260C4D6C0098E33E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		2A832BE924A9D94F00653321 = {
 			isa = PBXGroup;
 			children = (
+				2ACD11D6260C4D6C0098E33E /* .swiftlint.yml */,
 				2A832BF424A9D95000653321 /* MyListMovie */,
 				2A832BF324A9D95000653321 /* Products */,
 			);
@@ -77,6 +80,7 @@
 				2A832BEE24A9D94F00653321 /* Sources */,
 				2A832BEF24A9D94F00653321 /* Frameworks */,
 				2A832BF024A9D94F00653321 /* Resources */,
+				2ACD11D4260C4D3C0098E33E /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -94,7 +98,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Dicoding Indonesia";
 				TargetAttributes = {
 					2A832BF124A9D94F00653321 = {
@@ -125,6 +129,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ACD11D7260C4D6C0098E33E /* .swiftlint.yml in Resources */,
 				2A832C0224A9D95300653321 /* LaunchScreen.storyboard in Resources */,
 				2A832BFF24A9D95300653321 /* Assets.xcassets in Resources */,
 				2A832BFD24A9D95000653321 /* Main.storyboard in Resources */,
@@ -132,6 +137,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2ACD11D4260C4D3C0098E33E /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2A832BEE24A9D94F00653321 /* Sources */ = {
@@ -192,6 +218,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -252,6 +279,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
