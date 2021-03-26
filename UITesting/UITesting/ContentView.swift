@@ -10,9 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showingAlert = false
-    
+
     var body: some View {
-        Button(action: { self.showingAlert = true }) {
+        Button {
+            self.showingAlert = true
+        } label: {
             Text("Halo")
                 .font(.title)
                 .fontWeight(.bold)

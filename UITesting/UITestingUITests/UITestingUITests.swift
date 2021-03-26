@@ -16,5 +16,5 @@ class UITestingUITests: XCTestCase {
         app.buttons["Halo"].tap()
         app.alerts["Apa kabar?"].scrollViews.otherElements.buttons["OK"].tap()
     }
-    
+
 }
