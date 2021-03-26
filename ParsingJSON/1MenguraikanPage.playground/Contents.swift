@@ -40,9 +40,11 @@ struct Movies: Codable {
 private func decodeJSON(data: Data) {
     let decoder = JSONDecoder()
     
-    let movies = try! decoder.decode(Movies.self, from: data)
-    
-    print("PAGE: \(movies.page)")
-    print("TOTAL RESULTS: \(movies.total_results)")
-    print("TOTAL PAGES: \(movies.total_pages)")
+    if let movies = try? decoder.decode(Movies.self, from: data) as Movies {
+        print("PAGE: \(movies.page)")
+        print("TOTAL RESULTS: \(movies.total_results)")
+        print("TOTAL PAGES: \(movies.total_pages)")
+    } else {
+        print("ERROR: Can't Decode JSON")
+    }
 }
