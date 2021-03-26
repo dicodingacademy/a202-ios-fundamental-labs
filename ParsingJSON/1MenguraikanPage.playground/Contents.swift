@@ -1,5 +1,10 @@
 import UIKit
- 
+
+/*
+ Gunakanlah API Key Anda
+ Silakan daftar di https://www.dicoding.com/blog/registrasi-testing-themoviedb-api/.
+ */
+
 let apiKey = "API KEY"
 let language = "en-US"
 let page = "1"

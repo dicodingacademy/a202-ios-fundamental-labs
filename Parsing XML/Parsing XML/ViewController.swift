@@ -36,7 +36,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: XMLParserDelegate {
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    func parser(
+        _ parser: XMLParser,
+        didStartElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?,
+        attributes attributeDict: [String: String] = [:]
+    ) {
         if elementName == "movie" {
             movieTitle = String()
             overview = String()
@@ -50,7 +56,12 @@ extension ViewController: XMLParserDelegate {
         self.elementName = elementName
     }
 
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(
+        _ parser: XMLParser,
+        didEndElement elementName: String,
+        namespaceURI: String?,
+        qualifiedName qName: String?
+    ) {
         if elementName == "movie" {
             let movie = Movie(id: id, title: movieTitle, overview: overview, poster: poster)
 
@@ -63,10 +74,10 @@ extension ViewController: XMLParserDelegate {
 
         if !data.isEmpty {
             switch elementName {
-                case "title": movieTitle = data
-                case "overview": overview = data
-                case "poster": poster = data
-                default: break
+            case "title": movieTitle = data
+            case "overview": overview = data
+            case "poster": poster = data
+            default: break
             }
         }
     }

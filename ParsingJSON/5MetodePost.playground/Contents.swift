@@ -1,5 +1,9 @@
 import UIKit
 
+/*
+ Gunakanlah API Key Anda!
+ Silakan daftar di https://www.dicoding.com/blog/registrasi-testing-themoviedb-api/.
+ */
 let apiKey = "API KEY"
 
 struct Guest: Codable {
@@ -12,7 +16,7 @@ struct Guest: Codable {
     }
 }
 
-func getGuestSessionId(completion: ((Guest) -> ())?) {
+func getGuestSessionId(completion: ((Guest) -> Void)?) {
     var components = URLComponents(string: "https://api.themoviedb.org/3/authentication/guest_session/new")!
     
     components.queryItems = [

@@ -1,5 +1,10 @@
 import UIKit
- 
+
+/*
+ Gunakanlah API Key Anda!
+ Silakan daftar di https://www.dicoding.com/blog/registrasi-testing-themoviedb-api/.
+ */
+
 let apiKey = "API KEY"
 let language = "en-US"
 let page = "1"
@@ -37,13 +42,15 @@ struct Movies: Codable {
         case totalPages = "total_pages"
     }
 }
- 
+
 private func decodeJSON(data: Data) {
     let decoder = JSONDecoder()
-    
-    let movies = try! decoder.decode(Movies.self, from: data)
-    
-    print("PAGE: \(movies.page)")
-    print("TOTAL RESULTS: \(movies.totalResults)")
-    print("TOTAL PAGES: \(movies.totalPages)")
+
+    if let movies = try? decoder.decode(Movies.self, from: data) as Movies {
+        print("PAGE: \(movies.page)")
+        print("TOTAL RESULTS: \(movies.totalResults)")
+        print("TOTAL PAGES: \(movies.totalPages)")
+    } else {
+        print("ERROR: Can't Decode JSON")
+    }
 }

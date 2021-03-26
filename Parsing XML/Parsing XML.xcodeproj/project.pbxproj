@@ -14,6 +14,7 @@
 		2A3B55ED24CE72EC0052CB4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A3B55EC24CE72EC0052CB4B /* Assets.xcassets */; };
 		2A3B55F024CE72EC0052CB4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A3B55EE24CE72EC0052CB4B /* LaunchScreen.storyboard */; };
 		2A3B55F824CE73230052CB4B /* Movies.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2A3B55F724CE73230052CB4B /* Movies.xml */; };
+		2ACD11F7260C780F0098E33E /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2ACD11F6260C780F0098E33E /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2A3B55EF24CE72EC0052CB4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2A3B55F124CE72EC0052CB4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A3B55F724CE73230052CB4B /* Movies.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Movies.xml; sourceTree = "<group>"; };
+		2ACD11F6260C780F0098E33E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		2A3B55D724CE72E90052CB4B = {
 			isa = PBXGroup;
 			children = (
+				2ACD11F6260C780F0098E33E /* .swiftlint.yml */,
 				2A3B55E224CE72E90052CB4B /* Parsing XML */,
 				2A3B55E124CE72E90052CB4B /* Products */,
 			);
@@ -80,6 +83,7 @@
 				2A3B55DC24CE72E90052CB4B /* Sources */,
 				2A3B55DD24CE72E90052CB4B /* Frameworks */,
 				2A3B55DE24CE72E90052CB4B /* Resources */,
+				2ACD11F3260C77240098E33E /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -97,7 +101,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "Dicoding Indonesia";
 				TargetAttributes = {
 					2A3B55DF24CE72E90052CB4B = {
@@ -128,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ACD11F7260C780F0098E33E /* .swiftlint.yml in Resources */,
 				2A3B55F824CE73230052CB4B /* Movies.xml in Resources */,
 				2A3B55F024CE72EC0052CB4B /* LaunchScreen.storyboard in Resources */,
 				2A3B55ED24CE72EC0052CB4B /* Assets.xcassets in Resources */,
@@ -136,6 +141,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2ACD11F3260C77240098E33E /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2A3B55DC24CE72E90052CB4B /* Sources */ = {
@@ -196,6 +222,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -220,7 +247,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -256,6 +283,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -274,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
