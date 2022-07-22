@@ -10,51 +10,59 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-  private var _player: AVAudioPlayer?
+  // MARK: Inisialisasi variabel player
+  private var player: AVAudioPlayer?
 
   @IBOutlet weak var playButton: UIButton!
   @IBOutlet weak var stopButton: UIButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    stopButton.disable()
-    guard let url = Bundle.main.url(forResource: "guitar_background", withExtension: "mp3") else { return }
 
+    // MARK: Memastikan bahwa url dari asset tidak null.
+    guard let url = Bundle.main.url(
+      forResource: "guitar_background",
+      withExtension: "mp3"
+    ) else {
+      return
+    }
+
+    // MARK: Setup AVAudioPlayer
     do {
       try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
 
-      /* Kode ini untuk iOS 11 ke atas */
-      _player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
+      // MARK: Kode ini untuk iOS 11 ke atas.
+      player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.mp3.rawValue)
 
-      /* Sedangkan untuk iOS 10 ke bawah gunakan ini:
-       _player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3) */
+      // MARK: Kode ini untuk iOS 10 ke bawah.
+      // player = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3)
 
     } catch let error {
       print(error.localizedDescription)
     }
   }
 
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    isPlaying(state: false)
+  }
+
+  // MARK: Memainkan Musik
   @IBAction func playMusic(_ sender: UIButton) {
-    guard let player = _player else { return }
-    player.play()
-    stopButton.enable()
-    playButton.disable()
+  guard let audioPlayer = player else { return }
+    audioPlayer.play()
+    isPlaying(state: true)
   }
 
+  // MARK: Menghentikan Musik
   @IBAction func stopMusic(_ sender: UIButton) {
-    guard let player = _player else { return }
-    player.stop()
-    playButton.enable()
-    stopButton.disable()
-  }
-}
-
-extension UIButton {
-  func enable() {
-    self.isEnabled = true
+  guard let audioPlayer = player else { return }
+    audioPlayer.stop()
+    isPlaying(state: false)
   }
 
-  func disable() {
-    self.isEnabled = false
+  private func isPlaying(state: Bool) {
+    stopButton.isEnabled = state
+    playButton.isEnabled = !state
   }
 }
