@@ -10,22 +10,24 @@ import UIKit
 class ViewController: UIViewController {
 
   @IBOutlet var movieTableView: UITableView!
-
-  private let _pendingOperations = PendingOperations()
+  private let pendingOperations = PendingOperations()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     movieTableView.dataSource = self
 
     movieTableView.register(
-      UINib(nibName: "MovieTableViewCell", bundle: nil), // MARK: Isi dengan nama file XIB
-      forCellReuseIdentifier: "movieTableViewCell" // MARK: Isi dengan Identifier Cell yang telah ditentukan
+      UINib(nibName: "MovieTableViewCell", bundle: nil),
+      forCellReuseIdentifier: "movieTableViewCell"
     )
   }
-
 }
 
 extension ViewController: UIScrollViewDelegate {
+  fileprivate func toggleSuspendOperations(isSuspended: Bool) {
+    pendingOperations.downloadQueue.isSuspended = isSuspended
+  }
+
   func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     toggleSuspendOperations(isSuspended: true)
   }
@@ -33,11 +35,6 @@ extension ViewController: UIScrollViewDelegate {
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     toggleSuspendOperations(isSuspended: false)
   }
-
-  fileprivate func toggleSuspendOperations(isSuspended: Bool) {
-    _pendingOperations.downloadQueue.isSuspended = isSuspended
-  }
-
 }
 
 extension ViewController: UITableViewDataSource {
@@ -59,7 +56,6 @@ extension ViewController: UITableViewDataSource {
     ) as? MovieTableViewCell {
       
       let movie = movies[indexPath.row]
-
       cell.movieTitle.text = movie.title
       cell.movieImage.image = movie.image
 
@@ -71,34 +67,32 @@ extension ViewController: UITableViewDataSource {
       }
 
       return cell
-
     } else {
       return UITableViewCell()
     }
-  }
-
-  fileprivate func startDownload(movie: Movie, indexPath: IndexPath) {
-    guard _pendingOperations.downloadInProgress[indexPath] == nil else { return }
-
-    let downloader = ImageDownloader(movie: movie)
-
-    downloader.completionBlock = {
-      if downloader.isCancelled { return }
-
-      DispatchQueue.main.async {
-        self._pendingOperations.downloadInProgress.removeValue(forKey: indexPath)
-        self.movieTableView.reloadRows(at: [indexPath], with: .automatic)
-      }
-    }
-
-    _pendingOperations.downloadInProgress[indexPath] = downloader
-    _pendingOperations.downloadQueue.addOperation(downloader)
   }
 
   fileprivate func startOperations(movie: Movie, indexPath: IndexPath) {
     if movie.state == .new {
       startDownload(movie: movie, indexPath: indexPath)
     }
+  }
+
+  fileprivate func startDownload(movie: Movie, indexPath: IndexPath) {
+    guard pendingOperations.downloadInProgress[indexPath] == nil else { return }
+
+    let downloader = ImageDownloader(movie: movie)
+
+    downloader.completionBlock = {
+      if downloader.isCancelled { return }
+      DispatchQueue.main.async {
+        self.pendingOperations.downloadInProgress.removeValue(forKey: indexPath)
+        self.movieTableView.reloadRows(at: [indexPath], with: .automatic)
+      }
+    }
+
+    pendingOperations.downloadInProgress[indexPath] = downloader
+    pendingOperations.downloadQueue.addOperation(downloader)
   }
 
 }

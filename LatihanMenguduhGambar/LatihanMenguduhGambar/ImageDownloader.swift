@@ -2,7 +2,7 @@
 //  ImageDownloader.swift
 //  LatihanMenguduhGambar
 //
-//  Created by Gilang Ramadhan on 04/08/22.
+//  Created by Gilang Ramadhan on 05/08/22.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class ImageDownloader: Operation {
       return
     }
 
-    guard let imageData = try? Data(contentsOf: self.movie.poster) else { return }
+    guard let imageData = try? Data(contentsOf:  self.movie.poster) else { return }
 
     if isCancelled {
       return

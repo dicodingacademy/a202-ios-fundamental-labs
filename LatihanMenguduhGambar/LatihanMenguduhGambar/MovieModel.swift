@@ -24,7 +24,6 @@ class Movie {
   }
 }
 
-
 let movies = [
   Movie(
     title: "Thor: Love and Thunder",

@@ -15,7 +15,6 @@ class MovieTableViewCell: UITableViewCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
   }
 
   override func setSelected(
@@ -24,5 +23,4 @@ class MovieTableViewCell: UITableViewCell {
   ) {
     super.setSelected(selected, animated: animated)
   }
-
 }
