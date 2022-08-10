@@ -60,10 +60,12 @@ extension ViewController: UITableViewDataSource {
       cell.movieImage.image = movie.image
 
       if movie.state == .new {
+        cell.indicatorLoading.isHidden = false
         cell.indicatorLoading.startAnimating()
         startOperations(movie: movie, indexPath: indexPath)
       } else {
         cell.indicatorLoading.stopAnimating()
+        cell.indicatorLoading.isHidden = true
       }
 
       return cell
