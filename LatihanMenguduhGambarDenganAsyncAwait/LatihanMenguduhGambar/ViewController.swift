@@ -62,14 +62,16 @@ extension ViewController: UITableViewDataSource {
   fileprivate func startDownload(movie: Movie, indexPath: IndexPath) {
     let imageDownloader = ImageDownloader()
     if movie.state == .new {
-      do {
-        let image = try await imageDownloader.downloadImage(url: movie.poster)
-        movie.state = .downloaded
-        movie.image = image
-        self.movieTableView.reloadRows(at: [indexPath], with: .automatic)
-      } catch {
-        movie.state = .failed
-        movie.image = nil
+      Task {
+        do {
+          let image = try await imageDownloader.downloadImage(url: movie.poster)
+          movie.state = .downloaded
+          movie.image = image
+          self.movieTableView.reloadRows(at: [indexPath], with: .automatic)
+        } catch {
+          movie.state = .failed
+          movie.image = nil
+        }
       }
     }
   }
