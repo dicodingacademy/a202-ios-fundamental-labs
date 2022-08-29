@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A0160D728BCC45A00251871 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0160D628BCC45900251871 /* NetworkService.swift */; };
 		2A085499289D1FD5008BAD7E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A085498289D1FD5008BAD7E /* ImageDownloader.swift */; };
 		2A42DCA6289BB6D300F267A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A42DCA5289BB6D300F267A4 /* AppDelegate.swift */; };
 		2A42DCA8289BB6D300F267A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A42DCA7289BB6D300F267A4 /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A0160D628BCC45900251871 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2A085498289D1FD5008BAD7E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		2A42DCA2289BB6D300F267A4 /* LatihanMenguduhGambar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LatihanMenguduhGambar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A42DCA5289BB6D300F267A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A141D4A28BCBB2A00B91E4D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				2A42DCA5289BB6D300F267A4 /* AppDelegate.swift */,
+				2A42DCA7289BB6D300F267A4 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2A141D4B28BCBB6900B91E4D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A42DCA9289BB6D300F267A4 /* ViewController.swift */,
+				2A42DCC3289BCFB300F267A4 /* MovieTableViewCell.swift */,
+				2A42DCC4289BCFB300F267A4 /* MovieTableViewCell.xib */,
+				2A42DCAB289BB6D300F267A4 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A141D4C28BCBB8D00B91E4D /* NetworkSource */ = {
+			isa = PBXGroup;
+			children = (
+				2A42DCBD289BC3BB00F267A4 /* MovieModel.swift */,
+				2A085498289D1FD5008BAD7E /* ImageDownloader.swift */,
+				2A0160D628BCC45900251871 /* NetworkService.swift */,
+			);
+			path = NetworkSource;
+			sourceTree = "<group>";
+		};
+		2A141D4D28BCBBAF00B91E4D /* FileSystem */ = {
+			isa = PBXGroup;
+			children = (
+				2A42DCAE289BB6D600F267A4 /* Assets.xcassets */,
+				2A42DCB0289BB6D600F267A4 /* LaunchScreen.storyboard */,
+				2A42DCB3289BB6D600F267A4 /* Info.plist */,
+			);
+			path = FileSystem;
+			sourceTree = "<group>";
+		};
 		2A42DC99289BB6D300F267A4 = {
 			isa = PBXGroup;
 			children = (
@@ -64,17 +106,10 @@
 		2A42DCA4289BB6D300F267A4 /* LatihanMenguduhGambar */ = {
 			isa = PBXGroup;
 			children = (
-				2A42DCA5289BB6D300F267A4 /* AppDelegate.swift */,
-				2A42DCA7289BB6D300F267A4 /* SceneDelegate.swift */,
-				2A42DCA9289BB6D300F267A4 /* ViewController.swift */,
-				2A42DCBD289BC3BB00F267A4 /* MovieModel.swift */,
-				2A42DCC3289BCFB300F267A4 /* MovieTableViewCell.swift */,
-				2A085498289D1FD5008BAD7E /* ImageDownloader.swift */,
-				2A42DCC4289BCFB300F267A4 /* MovieTableViewCell.xib */,
-				2A42DCAB289BB6D300F267A4 /* Main.storyboard */,
-				2A42DCAE289BB6D600F267A4 /* Assets.xcassets */,
-				2A42DCB0289BB6D600F267A4 /* LaunchScreen.storyboard */,
-				2A42DCB3289BB6D600F267A4 /* Info.plist */,
+				2A141D4A28BCBB2A00B91E4D /* App */,
+				2A141D4C28BCBB8D00B91E4D /* NetworkSource */,
+				2A141D4B28BCBB6900B91E4D /* View */,
+				2A141D4D28BCBBAF00B91E4D /* FileSystem */,
 			);
 			path = LatihanMenguduhGambar;
 			sourceTree = "<group>";
@@ -89,6 +124,7 @@
 				2A42DC9E289BB6D300F267A4 /* Sources */,
 				2A42DC9F289BB6D300F267A4 /* Frameworks */,
 				2A42DCA0289BB6D300F267A4 /* Resources */,
+				2A0160D828BCE46A00251871 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -146,6 +182,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2A0160D828BCE46A00251871 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2A42DC9E289BB6D300F267A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -157,6 +213,7 @@
 				2A42DCA8289BB6D300F267A4 /* SceneDelegate.swift in Sources */,
 				2A085499289D1FD5008BAD7E /* ImageDownloader.swift in Sources */,
 				2A42DCBE289BC3BB00F267A4 /* MovieModel.swift in Sources */,
+				2A0160D728BCC45A00251871 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LatihanMenguduhGambar/Info.plist;
+				INFOPLIST_FILE = LatihanMenguduhGambar/FileSystem/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -332,7 +389,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LatihanMenguduhGambar/Info.plist;
+				INFOPLIST_FILE = LatihanMenguduhGambar/FileSystem/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
