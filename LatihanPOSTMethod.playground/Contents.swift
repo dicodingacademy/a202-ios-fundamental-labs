@@ -39,7 +39,7 @@ func getGuestSessionId(completion: ((Guest) -> ())?) {
 }
 
 getGuestSessionId { guest in
-  var components = URLComponents(string: "https://api.themoviedb.org/3/movie/438148/rating")!
+  var components = URLComponents(string: "https://api.themoviedb.org/3/movie/610150/rating")!
 
   components.queryItems = [
     URLQueryItem(name: "api_key", value: apiKey),
@@ -52,7 +52,7 @@ getGuestSessionId { guest in
   request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
   let jsonRequest = [
-    "value": 9.0
+    "value": 10.0
   ]
 
   let jsonData = try! JSONSerialization.data(withJSONObject: jsonRequest, options: [])
