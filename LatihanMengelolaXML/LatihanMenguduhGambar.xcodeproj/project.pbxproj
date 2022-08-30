@@ -17,6 +17,7 @@
 		2A42DCBE289BC3BB00F267A4 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A42DCBD289BC3BB00F267A4 /* MovieModel.swift */; };
 		2A42DCC5289BCFB300F267A4 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A42DCC3289BCFB300F267A4 /* MovieTableViewCell.swift */; };
 		2A42DCC6289BCFB300F267A4 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A42DCC4289BCFB300F267A4 /* MovieTableViewCell.xib */; };
+		2ABA201928BDC02F00F88F8C /* Movies.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2ABA201828BDC02F00F88F8C /* Movies.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2A42DCBD289BC3BB00F267A4 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		2A42DCC3289BCFB300F267A4 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		2A42DCC4289BCFB300F267A4 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		2ABA201828BDC02F00F88F8C /* Movies.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Movies.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,19 +66,52 @@
 		2A42DCA4289BB6D300F267A4 /* LatihanMenguduhGambar */ = {
 			isa = PBXGroup;
 			children = (
+				2ABA201428BDBF5600F88F8C /* App */,
+				2ABA201728BDBF7500F88F8C /* FileSystem */,
+				2ABA201528BDBF5F00F88F8C /* NetworkSource */,
+				2ABA201628BDBF6C00F88F8C /* View */,
+			);
+			path = LatihanMenguduhGambar;
+			sourceTree = "<group>";
+		};
+		2ABA201428BDBF5600F88F8C /* App */ = {
+			isa = PBXGroup;
+			children = (
 				2A42DCA5289BB6D300F267A4 /* AppDelegate.swift */,
 				2A42DCA7289BB6D300F267A4 /* SceneDelegate.swift */,
-				2A42DCA9289BB6D300F267A4 /* ViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		2ABA201528BDBF5F00F88F8C /* NetworkSource */ = {
+			isa = PBXGroup;
+			children = (
 				2A42DCBD289BC3BB00F267A4 /* MovieModel.swift */,
-				2A42DCC3289BCFB300F267A4 /* MovieTableViewCell.swift */,
 				2A085498289D1FD5008BAD7E /* ImageDownloader.swift */,
+			);
+			path = NetworkSource;
+			sourceTree = "<group>";
+		};
+		2ABA201628BDBF6C00F88F8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A42DCA9289BB6D300F267A4 /* ViewController.swift */,
+				2A42DCC3289BCFB300F267A4 /* MovieTableViewCell.swift */,
 				2A42DCC4289BCFB300F267A4 /* MovieTableViewCell.xib */,
 				2A42DCAB289BB6D300F267A4 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2ABA201728BDBF7500F88F8C /* FileSystem */ = {
+			isa = PBXGroup;
+			children = (
 				2A42DCAE289BB6D600F267A4 /* Assets.xcassets */,
 				2A42DCB0289BB6D600F267A4 /* LaunchScreen.storyboard */,
 				2A42DCB3289BB6D600F267A4 /* Info.plist */,
+				2ABA201828BDC02F00F88F8C /* Movies.xml */,
 			);
-			path = LatihanMenguduhGambar;
+			path = FileSystem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ABA201928BDC02F00F88F8C /* Movies.xml in Resources */,
 				2A42DCB2289BB6D600F267A4 /* LaunchScreen.storyboard in Resources */,
 				2A42DCAF289BB6D600F267A4 /* Assets.xcassets in Resources */,
 				2A42DCC6289BCFB300F267A4 /* MovieTableViewCell.xib in Resources */,
@@ -304,7 +340,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LatihanMenguduhGambar/Info.plist;
+				INFOPLIST_FILE = LatihanMenguduhGambar/FileSystem/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -332,7 +368,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LatihanMenguduhGambar/Info.plist;
+				INFOPLIST_FILE = LatihanMenguduhGambar/FileSystem/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

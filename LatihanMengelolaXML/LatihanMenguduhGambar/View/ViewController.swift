@@ -10,6 +10,12 @@ import UIKit
 class ViewController: UIViewController {
 
   @IBOutlet var movieTableView: UITableView!
+  var movieTitle = String()
+  var overview = String()
+  var poster = String()
+  var elementName = String()
+  var id = 0
+  var movies = [Movie]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,6 +25,13 @@ class ViewController: UIViewController {
       UINib(nibName: "MovieTableViewCell", bundle: nil),
       forCellReuseIdentifier: "movieTableViewCell"
     )
+
+    if let path = Bundle.main.url(forResource: "Movies", withExtension: "xml") {
+      if let parser = XMLParser(contentsOf: path) {
+        parser.delegate = self
+        parser.parse()
+      }
+    }
   }
 }
 
@@ -76,4 +89,60 @@ extension ViewController: UITableViewDataSource {
     }
   }
 
+}
+
+extension ViewController: XMLParserDelegate {
+  func parser(
+    _ parser: XMLParser,
+    didStartElement elementName: String,
+    namespaceURI: String?,
+    qualifiedName qName: String?,
+    attributes attributeDict: [String: String] = [:]
+  ) {
+    if elementName == "movie" {
+      movieTitle = String()
+      overview = String()
+      poster = String()
+
+      if let id = attributeDict["id"], let intId = Int(id) {
+        self.id = intId
+      }
+    }
+
+    self.elementName = elementName
+  }
+
+  func parser(
+    _ parser: XMLParser,
+    didEndElement elementName: String,
+    namespaceURI: String?,
+    qualifiedName qName: String?
+  ) {
+    if elementName == "movie" {
+
+      let posterPath = URL(string: "https://image.tmdb.org/t/p/w300\(poster)")!
+      let movie = Movie(id: id, title: movieTitle, overview: overview, poster: posterPath)
+      movies.append(movie)
+    }
+  }
+
+  func parser(
+    _ parser: XMLParser,
+    foundCharacters string: String
+  ) {
+    let data = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+
+    if !data.isEmpty {
+      switch elementName {
+      case "title": movieTitle = data
+      case "overview": overview = data
+      case "poster": poster = data
+      default: break
+      }
+    }
+  }
+
+  func parserDidEndDocument(_ parser: XMLParser) {
+    movieTableView.reloadData()
+  }
 }
