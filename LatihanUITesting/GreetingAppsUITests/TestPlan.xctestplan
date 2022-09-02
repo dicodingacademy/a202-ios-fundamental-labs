@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "A5C12DCC-F000-4BF1-9D64-03AA7678D131",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:GreetingApps.xcodeproj",
+        "identifier" : "2A9F3EBE28C1E4B00095D6FE",
+        "name" : "GreetingAppsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
