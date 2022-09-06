@@ -1,7 +1,7 @@
 import Cocoa
 
 // MARK: Gunakan API Key dalam akun Anda.
-let apiKey = "b8e51a152ed387c46ba2d4c8ced7345d"
+let apiKey = "API_KEY"
 let language = "en-US"
 let page = "1"
 
