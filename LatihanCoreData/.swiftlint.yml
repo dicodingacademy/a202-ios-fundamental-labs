@@ -1,0 +1,5 @@
+disabled_rules:
+ - line_length
+ - identifier_name
+ - function_parameter_count
+ - empty_parentheses_with_trailing_closure

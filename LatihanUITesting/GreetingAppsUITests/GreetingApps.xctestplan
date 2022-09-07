@@ -1,0 +1,30 @@
+{
+  "configurations" : [
+    {
+      "id" : "6F2DCAE7-A770-4FE5-AFBB-07BAE727EDCA",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:GreetingApps.xcodeproj",
+      "identifier" : "2A9F3EA428C1E4AB0095D6FE",
+      "name" : "GreetingApps"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:GreetingApps.xcodeproj",
+        "identifier" : "2A9F3EBE28C1E4B00095D6FE",
+        "name" : "GreetingAppsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

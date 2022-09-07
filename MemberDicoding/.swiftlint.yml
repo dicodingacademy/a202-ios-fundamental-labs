@@ -1,4 +1,0 @@
-disabled_rules:
- - line_length
- - identifier_name
- - function_parameter_count

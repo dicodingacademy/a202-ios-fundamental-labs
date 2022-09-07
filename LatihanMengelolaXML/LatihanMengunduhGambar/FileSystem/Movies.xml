@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<movies>
+  <movie id="610150">
+    <title>Dragon Ball Super: Super Hero</title>
+    <overview>The Red Ribbon Army, an evil organization that was once destroyed by Goku in the past, has been reformed by a group of people who have created new and mightier Androids, Gamma 1 and Gamma 2, and seek vengeance against Goku and his family.</overview>
+    <poster>/rugyJdeoJm7cSJL1q4jBpTNbxyU.jpg</poster>
+  </movie>
+  <movie id="675353">
+    <title>Sonic the Hedgehog 2</title>
+    <overview>After settling in Green Hills, Sonic is eager to prove he has what it takes to be a true hero. His test comes when Dr. Robotnik returns, this time with a new partner, Knuckles, in search for an emerald that has the power to destroy civilizations. Sonic teams up with his own sidekick, Tails, and together they embark on a globe-trotting journey to find the emerald before it falls into the wrong hands.</overview>
+    <poster>/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg</poster>
+  </movie>
+  <movie id="453395">
+    <title>Doctor Strange in the Multiverse of Madness</title>
+    <overview>Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.</overview>
+    <poster>/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg</poster>
+  </movie>
+  <movie id="634649">
+    <title>Spider-Man: No Way Home</title>
+    <overview>Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.</overview>
+    <poster>/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg</poster>
+  </movie>
+  <movie id="616037">
+    <title>Thor: Love and Thunder</title>
+    <overview>After his retirement is interrupted by Gorr the God Butcher, a galactic killer who seeks the extinction of the gods, Thor Odinson enlists the help of King Valkyrie, Korg, and ex-girlfriend Jane Foster, who now inexplicably wields Mjolnir as the Relatively Mighty Girl Thor. Together they embark upon a harrowing cosmic adventure to uncover the mystery of the God Butcher's vengeance and stop him before it's too late.</overview>
+    <poster>/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg</poster>
+  </movie>
+</movies>

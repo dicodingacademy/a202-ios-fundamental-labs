@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21219" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21200"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LatihanDownloadTaks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oHm-CX-ieQ">
+                                <rect key="frame" x="32" y="406" width="326" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="2t7-wk-abd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="4" id="SqG-3x-aUm"/>
+                                </constraints>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Progres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bj-Dh-XZP">
+                                <rect key="frame" x="165" y="446" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAk-qy-xdu">
+                                <rect key="frame" x="145" y="482" width="100" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Download"/>
+                                <connections>
+                                    <action selector="buttonDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iiR-z9-okw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oHm-CX-ieQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="E4j-yl-Hz7"/>
+                            <constraint firstItem="oHm-CX-ieQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dvh-iP-2Qj"/>
+                            <constraint firstItem="GAk-qy-xdu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iaT-tc-ewq"/>
+                            <constraint firstItem="oHm-CX-ieQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l2b-pV-WiC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oHm-CX-ieQ" secondAttribute="trailing" constant="32" id="luy-8X-zvK"/>
+                            <constraint firstItem="9bj-Dh-XZP" firstAttribute="top" secondItem="oHm-CX-ieQ" secondAttribute="bottom" constant="8" symbolic="YES" id="m7c-Gc-h54"/>
+                            <constraint firstItem="GAk-qy-xdu" firstAttribute="top" secondItem="9bj-Dh-XZP" secondAttribute="bottom" constant="15" id="moI-lg-bK8"/>
+                            <constraint firstItem="9bj-Dh-XZP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="oFn-F2-uxr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonView" destination="GAk-qy-xdu" id="cdH-qi-ks0"/>
+                        <outlet property="messageView" destination="9bj-Dh-XZP" id="VFc-sh-Adl"/>
+                        <outlet property="progressView" destination="oHm-CX-ieQ" id="qQq-nF-loR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
