@@ -12,7 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
 
-  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+  func scene(
+    _ scene: UIScene,
+    willConnectTo session: UISceneSession,
+    options connectionOptions: UIScene.ConnectionOptions
+  ) {
+    // Insert data dummy.
     if !UserDefaults.standard.bool(forKey: "first") {
       MemberProvider().addMemberDummy() {
         UserDefaults.standard.set(true, forKey: "first")
